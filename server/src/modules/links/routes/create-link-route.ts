@@ -7,7 +7,6 @@ import { LinksRepository } from '../repositories/links-repository.js';
 import { CreateLinkService } from '../services/create-link.js';
 
 export const createLinkRoute: FastifyPluginAsyncZod = async (app) => {
-  console.log('CREATE POST LINK ROUTE REGISTERED');
   app.post(
     '/links',
     {

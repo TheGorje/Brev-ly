@@ -5,8 +5,7 @@ import { linkSchema } from '../../../shared/schemas/link-schema.js';
 import { LinksRepository } from '../repositories/links-repository.js';
 import { GetLinksService } from '../services/get-links.js';
 
-export const getLinks: FastifyPluginAsyncZod = async (app) => {
-  console.log('CREATE GET LINKS REGISTERED');
+export const getLinksRoute: FastifyPluginAsyncZod = async (app) => {
   app.get(
     '/links',
     {
