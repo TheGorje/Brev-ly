@@ -2,11 +2,12 @@ import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 
 import { errorSchema } from '../../../shared/schemas/error-schema.js';
+import { linkSchema } from '../../../shared/schemas/link-schema.js';
 import { LinksRepository } from '../repositories/links-repository.js';
 import { CreateLinkService } from '../services/create-link.js';
 
 export const createLinkRoute: FastifyPluginAsyncZod = async (app) => {
-  console.log('CREATE LINK ROUTE REGISTERED');
+  console.log('CREATE POST LINK ROUTE REGISTERED');
   app.post(
     '/links',
     {
@@ -30,11 +31,7 @@ export const createLinkRoute: FastifyPluginAsyncZod = async (app) => {
         }),
 
         response: {
-          201: z.object({
-            id: z.string(),
-            originalUrl: z.string(),
-            shortUrl: z.string(),
-          }),
+          201: linkSchema,
 
           400: errorSchema,
 
@@ -50,11 +47,7 @@ export const createLinkRoute: FastifyPluginAsyncZod = async (app) => {
 
       const link = await service.execute(request.body);
 
-      return reply.status(201).send({
-        id: link.id,
-        originalUrl: link.originalUrl,
-        shortUrl: link.shortUrl,
-      });
+      return reply.status(201).send(link);
     },
   );
 };

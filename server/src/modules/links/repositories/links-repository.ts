@@ -21,4 +21,8 @@ export class LinksRepository {
 
     return result[0];
   }
+
+  async findMany() {
+    return db.select().from(links);
+  }
 }
