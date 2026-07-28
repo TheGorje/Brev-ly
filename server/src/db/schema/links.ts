@@ -5,7 +5,7 @@ export const links = pgTable('links', {
 
   originalUrl: text('original_url').notNull(),
 
-  shortCode: text('short_code').notNull().unique(),
+  shortUrl: text('short_url').notNull().unique(),
 
   accessCount: integer('access_count').notNull().default(0),
 
