@@ -1,8 +1,8 @@
 import { db } from '../db/index.js';
 import { links } from '../db/schema/links.js';
 
-export async function registerOneMillionOnDataBase() {
-  const amount = 1_000_000;
+export async function registerSeedData() {
+  const amount = 20_000;
   const batchSize = 5000;
 
   for (let i = 0; i < amount; i += batchSize) {

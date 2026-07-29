@@ -1,9 +1,9 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 
+import { paginationCursorQuerySchema } from '../../../shared/schemas/get-paginated-links-query-schema.js';
 import { paginatedLinksSchema } from '../../../shared/schemas/paginated-links-schema.js';
-import { paginationQuerySchema } from '../../../shared/schemas/pagination-query-schema.js';
 import { LinksRepository } from '../repositories/links-repository.js';
-import { GetPaginatedLinksService } from '../services/get-paginated-link.js';
+import { GetPaginatedLinksService } from '../services/get-paginated-links.js';
 
 export const getPaginatedLinks: FastifyPluginAsyncZod = async (app) => {
   app.get(
@@ -11,11 +11,11 @@ export const getPaginatedLinks: FastifyPluginAsyncZod = async (app) => {
     {
       schema: {
         summary: 'List paginated shortened URLs',
-        description: 'Returns shortened URLs ordered by newest first using pagination.',
+        description: 'Returns shortened URLs ordered by newest first with cursor-based pagination',
 
         tags: ['Links'],
 
-        querystring: paginationQuerySchema,
+        querystring: paginationCursorQuerySchema,
 
         response: {
           200: paginatedLinksSchema,
