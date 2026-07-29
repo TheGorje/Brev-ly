@@ -1,0 +1,28 @@
+import { db } from '../db/index.js';
+import { links } from '../db/schema/links.js';
+
+export async function registerOneMillionOnDataBase() {
+  const amount = 1_000_000;
+  const batchSize = 5000;
+
+  for (let i = 0; i < amount; i += batchSize) {
+    const batch = Array.from(
+      {
+        length: Math.min(batchSize, amount - i),
+      },
+      (_, index) => ({
+        originalUrl: `https://example.com/${i + index}`,
+
+        shortUrl: `test-${i + index}`,
+
+        accessCount: i + index,
+
+        createdAt: new Date(),
+      }),
+    );
+
+    await db.insert(links).values(batch);
+  }
+
+  process.exit();
+}

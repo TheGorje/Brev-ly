@@ -11,6 +11,9 @@ export const getLinksRoute: FastifyPluginAsyncZod = async (app) => {
     {
       schema: {
         summary: 'List all shortened URLs',
+        description: 'Returns all shortened URLs with their metadata.',
+        tags: ['Links'],
+
         response: {
           200: z.array(linkSchema),
         },

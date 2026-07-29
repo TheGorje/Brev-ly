@@ -44,4 +44,22 @@ export class LinksRepository {
       })
       .where(eq(links.id, id));
   }
+
+  async *streamAllForExport() {
+    const batchSize = 1000;
+
+    let offset = 0;
+
+    while (true) {
+      const batch = await db.select().from(links).limit(batchSize).offset(offset);
+
+      if (batch.length === 0) {
+        break;
+      }
+
+      yield batch;
+
+      offset += batchSize;
+    }
+  }
 }

@@ -1,9 +1,37 @@
-import { z } from 'zod';
+import z from 'zod';
 
-export const linkSchema = z.object({
-  id: z.string(),
-  originalUrl: z.string(),
-  shortUrl: z.string(),
-  accessCount: z.number(),
-  createdAt: z.date(),
-});
+export const linkSchema = z
+  .object({
+    id: z.uuid().meta({
+      description: 'Unique identifier.',
+      example: 'c6ef8ef8-2f17-4b87-9db8-c88d72db0d54',
+    }),
+
+    originalUrl: z.url().meta({
+      description: 'Original URL.',
+      example: 'https://www.rocketseat.com.br',
+    }),
+
+    shortUrl: z.string().meta({
+      description: 'Unique short URL.',
+      example: 'rocketseat',
+    }),
+
+    accessCount: z.number().meta({
+      description: 'Number of accesses.',
+      example: 42,
+    }),
+
+    createdAt: z.date().meta({
+      description: 'Creation date.',
+    }),
+  })
+  .meta({
+    example: {
+      id: 'c6ef8ef8-2f17-4b87-9db8-c88d72db0d54',
+      originalUrl: 'https://www.rocketseat.com.br',
+      shortUrl: 'rocketseat',
+      accessCount: 42,
+      createdAt: '2026-09-28T18:30:00.000Z',
+    },
+  });

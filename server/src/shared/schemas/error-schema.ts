@@ -2,6 +2,8 @@ import { z } from 'zod';
 
 export const errorSchema = z
   .object({
-    message: z.string(),
+    message: z.string().meta({
+      description: 'Error message.',
+    }),
   })
   .describe('Application error response');

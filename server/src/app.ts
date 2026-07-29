@@ -6,6 +6,8 @@ import { registerErrorHandler } from './config/error-handler.js';
 import { registerOpenAPI } from './config/openapi.js';
 import { registerRoutes } from './routes/register-routes.js';
 
+// import { registerOneMillionOnDataBase } from './scripts/seed-links.js';
+
 export async function buildApp() {
   const app = fastify();
 
@@ -19,6 +21,9 @@ export async function buildApp() {
   await registerOpenAPI(app);
 
   await registerRoutes(app);
+
+  // // Registra 1 milhão de links no banco de dados, para teste de stream
+  // await registerOneMillionOnDataBase();
 
   return app;
 }

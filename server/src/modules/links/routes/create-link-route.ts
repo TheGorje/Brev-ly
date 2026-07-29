@@ -12,29 +12,40 @@ export const createLinkRoute: FastifyPluginAsyncZod = async (app) => {
     {
       schema: {
         summary: 'Create a shortened URL',
+        description: 'Creates a new shortened URL. The short URL must be unique.',
+        tags: ['Links'],
 
-        body: z.object({
-          originalUrl: z
-            .string({
-              message: 'A URL original é obrigatória.',
-            })
-            .url('Informe uma URL válida.'),
+        body: z
+          .object({
+            originalUrl: z.url('Informe uma URL válida.'),
 
-          shortUrl: z
-            .string({
-              message: 'A URL encurtada é obrigatória.',
-            })
-            .min(3, 'No mínimo 3 caracteres.')
-            .max(20, 'No máximo 20 caracteres.')
-            .regex(/^[a-z0-9-]+$/, 'Apenas letras minúsculas, números e hífen.'),
-        }),
+            shortUrl: z
+              .string({
+                message: 'A URL encurtada é obrigatória.',
+              })
+              .min(3, 'No mínimo 3 caracteres.')
+              .max(20, 'No máximo 20 caracteres.')
+              .regex(/^[a-z0-9-]+$/, 'Apenas letras minúsculas, números e hífen.'),
+          })
+          .meta({
+            example: {
+              originalUrl: 'https://www.rocketseat.com.br',
+              shortUrl: 'rocketseat',
+            },
+          }),
 
         response: {
           201: linkSchema,
-
-          400: errorSchema,
-
-          409: errorSchema,
+          400: errorSchema.meta({
+            example: {
+              message: 'Verifique os dados enviados.',
+            },
+          }),
+          409: errorSchema.meta({
+            example: {
+              message: 'A URL encurtada já está sendo utilizada.',
+            },
+          }),
         },
       },
     },

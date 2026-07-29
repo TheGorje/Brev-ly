@@ -12,15 +12,23 @@ export const redirectLinkRoute: FastifyPluginAsyncZod = async (app) => {
     {
       schema: {
         summary: 'Redirect shortened URL',
+        description:
+          'Returns the original URL for the provided short URL and increments its access count.',
+        tags: ['Links'],
 
         params: z.object({
-          shortUrl: z.string(),
+          shortUrl: z.string().meta({
+            example: 'rocketseat',
+          }),
         }),
 
         response: {
           200: redirectSchema,
-
-          404: errorSchema,
+          404: errorSchema.meta({
+            example: {
+              message: 'Link não encontrado.',
+            },
+          }),
         },
       },
     },

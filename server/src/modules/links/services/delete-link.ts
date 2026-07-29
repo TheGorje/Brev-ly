@@ -1,4 +1,4 @@
-import { AppError } from '../../../errors/app-error.js';
+import { ShortUrlNotFoundError } from '../../../errors/short-url-not-found-error.js';
 import type { LinksRepository } from '../repositories/links-repository.js';
 
 type DeleteLinkRequest = {
@@ -12,7 +12,7 @@ export class DeleteLinkService {
     const link = await this.linksRepository.findById(id);
 
     if (!link) {
-      throw new AppError('Link não encontrado.', 404);
+      throw new ShortUrlNotFoundError();
     }
 
     await this.linksRepository.deleteById(id);
