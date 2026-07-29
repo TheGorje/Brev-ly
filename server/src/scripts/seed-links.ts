@@ -17,7 +17,7 @@ export async function registerOneMillionOnDataBase() {
 
         accessCount: i + index,
 
-        createdAt: new Date(),
+        createdAt: new Date(Date.now() + i + index),
       }),
     );
 

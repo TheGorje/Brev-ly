@@ -8,7 +8,7 @@ export async function registerOpenAPI(app: FastifyInstance) {
     openapi: {
       info: {
         title: 'Brev.ly API',
-        description: 'API para gerenciamento de URL encurtadas',
+        description: 'Achieve URL shortening management.',
         version: '1.0.0',
       },
     },
@@ -20,7 +20,7 @@ export async function registerOpenAPI(app: FastifyInstance) {
     routePrefix: '/docs',
 
     configuration: {
-      layout: 'modern',
+      layout: 'classic',
     },
   });
 

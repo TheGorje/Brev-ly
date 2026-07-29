@@ -1,4 +1,4 @@
-import { eq, sql } from 'drizzle-orm';
+import { count, desc, eq, sql } from 'drizzle-orm';
 
 import { db } from '../../../db/index.js';
 import { links } from '../../../db/schema/links.js';
@@ -30,6 +30,29 @@ export class LinksRepository {
     const result = await db.select().from(links).where(eq(links.id, id));
 
     return result[0];
+  }
+
+  async findPaginated({ page, pageSize }: { page: number; pageSize: number }) {
+    const offset = (page - 1) * pageSize;
+    const items = await db
+      .select()
+      .from(links)
+      .orderBy(desc(links.createdAt), desc(links.id))
+      .limit(pageSize)
+      .offset(offset);
+
+    const [result] = await db
+      .select({
+        total: count(),
+      })
+      .from(links);
+
+    const total = Number(result?.total ?? 0);
+
+    return {
+      items,
+      total: Number(total),
+    };
   }
 
   async deleteById(id: string) {

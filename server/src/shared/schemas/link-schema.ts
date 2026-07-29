@@ -32,6 +32,6 @@ export const linkSchema = z
       originalUrl: 'https://www.rocketseat.com.br',
       shortUrl: 'rocketseat',
       accessCount: 42,
-      createdAt: '2026-09-28T18:30:00.000Z',
+      createdAt: '2026-07-28T22:17:27.647Z',
     },
   });
