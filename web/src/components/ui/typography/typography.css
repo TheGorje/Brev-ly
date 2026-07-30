@@ -1,0 +1,35 @@
+.typography-xl {
+  font-family: var(--font-family-open-sans);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-xs);
+}
+
+.typography-lg {
+  font-family: var(--font-family-open-sans);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-sm);
+}
+
+.typography-md {
+  font-family: var(--font-family-open-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-md);
+}
+
+.typography-sm {
+  font-family: var(--font-family-open-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-lg);
+}
+
+.typography-xs {
+  font-family: var(--font-family-open-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xl);
+  text-transform: uppercase;
+}

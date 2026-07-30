@@ -1,0 +1,38 @@
+:root {
+  /* Grayscale */
+  --gray-white: #ffffff;
+
+  --gray-100: #f9f9fb;
+  --gray-200: #e4e6ec;
+  --gray-300: #cdcfd5;
+  --gray-400: #74798b;
+  --gray-500: #4d505c;
+  --gray-600: #1f2025;
+
+  /* Blue */
+  --blue-base: #2c46b1;
+  --blue-dark: #2c4091;
+
+  /* Feedback */
+  --danger: #b12c4d;
+
+  /* Typography */
+  --font-family-open-sans: "Open Sans", sans-serif;
+  --font-family-quicksand: "Quicksand", sans-serif;
+
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-regular: 400;
+
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+
+  --line-height-xs: 32px;
+  --line-height-sm: 24px;
+  --line-height-md: 18px;
+  --line-height-lg: 16px;
+  --line-height-xl: 14px;
+}
