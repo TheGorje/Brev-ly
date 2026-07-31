@@ -14,7 +14,7 @@ export function useCreateLinkForm() {
 
   const form = useForm<CreateLinkFormData>({
     resolver: zodResolver(createLinkSchema),
-    mode: "onChange",
+    mode: "onBlur",
   });
 
   const { setError } = form;
