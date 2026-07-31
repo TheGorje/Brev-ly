@@ -17,7 +17,7 @@ export async function registerSeedData() {
 
         accessCount: i + index,
 
-        createdAt: new Date(Date.now() + i + index),
+        createdAt: new Date(Date.now() - (i + index) * 1000),
       }),
     );
 

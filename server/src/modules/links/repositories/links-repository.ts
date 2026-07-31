@@ -70,6 +70,17 @@ export class LinksRepository {
       .where(eq(links.id, id));
   }
 
+  async hasLinks() {
+    const result = await db
+      .select({
+        id: links.id,
+      })
+      .from(links)
+      .limit(1);
+
+    return result.length > 0;
+  }
+
   async *streamAllForExport() {
     const batchSize = 1000;
 

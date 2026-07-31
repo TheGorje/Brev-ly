@@ -1,6 +1,6 @@
-import { randomUUID } from 'node:crypto';
 import { PassThrough } from 'node:stream';
 
+import { NoLinksToExportError } from '../../../shared/schemas/no-links-to-export-error.js';
 import type { LinksRepository } from '../../links/repositories/links-repository.js';
 import type { Storage } from '../../storage/storage.js';
 import { createCsvStream } from '../streams/csv-transform-stream.js';
@@ -12,15 +12,33 @@ export class ExportLinksService {
   ) {}
 
   async execute() {
+    const hasLinks = await this.linksRepository.hasLinks();
+
+    if (!hasLinks) {
+      throw new NoLinksToExportError();
+    }
+
     const csvStream = createCsvStream();
 
     const passThrough = new PassThrough();
 
-    csvStream.pipe(passThrough);
-
     try {
+      csvStream.pipe(passThrough);
+      const dateWithoutTime = new Intl.DateTimeFormat('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+        .format(new Date())
+        .replace(/\//g, '-')
+        .replace(',', '')
+        .replace(/:/g, '-');
+
       const uploadPromise = this.storage.upload({
-        fileName: `exports/${randomUUID()}.csv`,
+        fileName: `brev-ly links ${dateWithoutTime}.csv`,
         content: passThrough,
         contentType: 'text/csv',
       });

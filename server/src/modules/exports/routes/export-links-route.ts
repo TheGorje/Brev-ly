@@ -1,5 +1,6 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 
+import { errorSchema } from '../../../shared/schemas/error-schema.js';
 import { LinksRepository } from '../../links/repositories/links-repository.js';
 import { R2Storage } from '../../storage/r2-storage.js';
 import { exportSchema } from '../schemas/export-schema.js';
@@ -17,6 +18,9 @@ export const exportLinksRoute: FastifyPluginAsyncZod = async (app) => {
 
         response: {
           200: exportSchema,
+          422: errorSchema.meta({
+            message: 'Não existem links cadastrados para exportação.',
+          }),
         },
       },
     },

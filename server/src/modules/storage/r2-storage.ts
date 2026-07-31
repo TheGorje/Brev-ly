@@ -64,6 +64,7 @@ export class R2Storage implements Storage {
         Key: fileName,
         Body: progressStream,
         ContentType: contentType,
+        ContentDisposition: 'attachment',
       },
 
       queueSize: 4,
