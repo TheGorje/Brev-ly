@@ -4,7 +4,7 @@ import notFoundPageImage from "@/assets/404.svg";
 
 export function LinkNotFoundPage() {
   return (
-    <div className="flex h-full flex-col items-center justify-center">
+    <div className="flex h-screen flex-col items-center justify-center">
       <div className="flex max-w-145 flex-col items-center gap-6 rounded-lg bg-gray-100 px-12 py-16 text-center">
         <img
           src={notFoundPageImage}

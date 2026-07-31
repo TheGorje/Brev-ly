@@ -1,6 +1,6 @@
-import { MyLinks } from "@/features/create-link/components/my-links";
 import { NewLink } from "@/features/create-link/components/new-file";
 import LogoIcon from "@/assets/Logo_Icon.svg";
+import { MyLinks } from "@/features/my-links/components/my-links";
 
 export function HomePage() {
   return (

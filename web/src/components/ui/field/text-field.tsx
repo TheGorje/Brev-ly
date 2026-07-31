@@ -1,6 +1,6 @@
 import { forwardRef, useState, type InputHTMLAttributes } from "react";
 
-import { cn } from "@/lib/utils/cn";
+import { cn } from "@/utils/cn";
 import { Typography } from "@ui";
 import { WarningIcon } from "@phosphor-icons/react/dist/ssr";
 
