@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { Link } from "../types";
 import { MyLinksCard } from "./my-link-card";
+import { LoadingSpinner, Typography } from "@/components/ui";
 
 interface MyLinksListProps {
   links: Link[];
@@ -59,8 +60,15 @@ export function MyLinksList({
       ))}
 
       {hasMore && (
-        <li ref={endRef} className="py-4 text-center">
-          {isLoadingMore && "Carregando mais..."}
+        <li ref={endRef} className="flex w-full items-center py-4 text-center">
+          {isLoadingMore && (
+            <div className="flex w-full items-center justify-center gap-1">
+              <LoadingSpinner />
+              <Typography variant="sm" as="span">
+                Carregando mais
+              </Typography>
+            </div>
+          )}
         </li>
       )}
     </ul>
