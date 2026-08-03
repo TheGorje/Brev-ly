@@ -5,10 +5,8 @@ import { Provider } from "./provider";
 
 export function App() {
   return (
-    <main className="h-full w-full px-3 py-8">
-      <Provider>
-        <RouterProvider router={router} />
-      </Provider>
-    </main>
+    <Provider>
+      <RouterProvider router={router} />
+    </Provider>
   );
 }

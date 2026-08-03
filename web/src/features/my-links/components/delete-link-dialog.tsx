@@ -4,12 +4,14 @@ interface DeleteLinkDialogProps {
   open: boolean;
   onOpenChange(open: boolean): void;
   onConfirm(): void;
+  shortUrl: string;
 }
 
 export function DeleteLinkDialog({
   open,
   onOpenChange,
   onConfirm,
+  shortUrl,
 }: DeleteLinkDialogProps) {
   function handleConfirm() {
     onConfirm();
@@ -20,7 +22,13 @@ export function DeleteLinkDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
-          <Typography variant="lg">Excluir link?</Typography>
+          <Typography variant="lg">
+            Excluir o link{" "}
+            <Typography variant="lg" as="span" className="text-danger">
+              {shortUrl}
+            </Typography>
+            ?
+          </Typography>
 
           <Typography variant="sm" className="text-gray-500">
             Essa ação não poderá ser desfeita.
@@ -28,14 +36,13 @@ export function DeleteLinkDialog({
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-          <Button
-            onClick={() => onOpenChange(false)}
-            className="flex h-12 cursor-pointer items-center justify-center gap-3 rounded-lg border bg-transparent px-5 opacity-50 transition-all ease-out hover:opacity-100"
-          >
-            Cancelar
+          <Button variant="outlined" onClick={() => onOpenChange(false)}>
+            <Typography variant="md">Cancelar</Typography>
           </Button>
 
-          <Button onClick={handleConfirm}>Excluir</Button>
+          <Button onClick={handleConfirm}>
+            <Typography variant="md">Excluir</Typography>
+          </Button>
         </div>
       </div>
     </Dialog>

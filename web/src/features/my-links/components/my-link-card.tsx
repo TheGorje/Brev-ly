@@ -90,6 +90,7 @@ export function MyLinksCard({
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
         onConfirm={() => deleteLink(id)}
+        shortUrl={shortUrl}
       />
     </>
   );

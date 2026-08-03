@@ -4,7 +4,7 @@ import { MyLinks } from "@/features/my-links/components/my-links";
 
 export function HomePage() {
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center">
+    <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-3 py-8">
       <div className="mb-8 flex w-full justify-center gap-2 lg:justify-start">
         <img
           src={LogoIcon}

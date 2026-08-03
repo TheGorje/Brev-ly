@@ -1,14 +1,31 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
+import { cn } from "@/utils/cn";
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
+  variant?: "default" | "outlined";
 }
 
-export function Button({ disabled, children, ...props }: ButtonProps) {
+export function Button({
+  children,
+  variant = "default",
+  className,
+  ...props
+}: ButtonProps) {
   return (
     <button
-      disabled={disabled}
-      className="bg-blue-base enabled:hover:bg-blue-dark flex h-12 cursor-pointer items-center justify-center gap-3 rounded-lg px-5 text-white transition-colors ease-out disabled:cursor-not-allowed disabled:opacity-50"
+      className={cn(
+        "flex h-12 items-center justify-center gap-3 rounded-lg px-5 transition-all ease-out disabled:cursor-not-allowed",
+        {
+          "bg-blue-base enabled:hover:bg-blue-dark cursor-pointer text-white disabled:opacity-50":
+            variant === "default",
+
+          "cursor-pointer border bg-transparent opacity-50 hover:opacity-100":
+            variant === "outlined",
+        },
+        className,
+      )}
       {...props}
     >
       {children}

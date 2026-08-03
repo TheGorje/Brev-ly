@@ -2,4 +2,4 @@ packages:
   - server
   - web
 allowBuilds:
-  esbuild: false
+  esbuild: true
