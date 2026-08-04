@@ -226,7 +226,7 @@ Após iniciar os containers, os serviços estarão disponíveis em:
 
 | Serviço             | Endereço                   |
 | ------------------- | -------------------------- |
-| Frontend            | http://localhost           |
+| Frontend            | http://localhost:3000      |
 | Backend             | http://localhost:3333      |
 | Documentação da API | http://localhost:3333/docs |
 
