@@ -10,5 +10,8 @@ dist
 .env
 **/.env
 
+!web/.env
+
+
 .vscode
 .idea

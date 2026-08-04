@@ -4,9 +4,11 @@ WORKDIR /app
 
 RUN corepack enable
 
+COPY web/.env web/.env
+
 ARG VITE_BACKEND_URL
 
-ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+RUN sed -i "s|^VITE_BACKEND_URL=.*|VITE_BACKEND_URL=${VITE_BACKEND_URL}|" web/.env
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
