@@ -83,7 +83,7 @@ Este projeto demonstra a utilização de:
 
 # 🏗️ Arquitetura
 
-![Demonstração](assets/arquitetura.png)
+![Arquitetura](assets/arquitetura_banner.png)
 
 ---
 
@@ -230,7 +230,7 @@ Após iniciar os containers, os serviços estarão disponíveis em:
 | Backend             | http://localhost:3333      |
 | Documentação da API | http://localhost:3333/docs |
 
-![Demonstração](assets/docker.png)
+![Docker](assets/docker_banner.png)
 
 ---
 
