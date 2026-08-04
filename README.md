@@ -83,25 +83,7 @@ Este projeto demonstra a utilização de:
 
 # 🏗️ Arquitetura
 
-```text
-Browser
-   │
-   ▼
- Nginx
- ├── React
- └── /api
-      │
-      ▼
- Fastify
-      │
-      ▼
- PostgreSQL
-
-Cloudflare R2
-      ▲
-      │
- Exportação CSV
-```
+![Demonstração](assets/arquitetura.png)
 
 ---
 
@@ -247,6 +229,8 @@ Após iniciar os containers, os serviços estarão disponíveis em:
 | Frontend            | http://localhost           |
 | Backend             | http://localhost:3333      |
 | Documentação da API | http://localhost:3333/docs |
+
+![Demonstração](assets/docker.png)
 
 ---
 
